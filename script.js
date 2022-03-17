@@ -44,12 +44,18 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    document.getElementById("grid").deleteRow(-1);
+    //alert("Clicked Remove Row"); // Replace this line with your code.
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    const table = document.querySelector("table");
+    for (let rows of table.rows) {
+        rows.deleteCell(-1)
+        console.log("Apple")
+    }
+    //alert("Clicked Remove Col"); // Replace this line with your code.
 }
 
 // Set global variable for selected color
