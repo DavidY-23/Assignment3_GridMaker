@@ -5,12 +5,37 @@ let colorSelected;
 
 // Add a row
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    let grid = document.getElementById("grid");
+    let row = document.createElement("tr");
+    let column = document.createElement("td")
+
+    let gridLastEle = grid.lastElementChild
+    let gridLast = gridLastEle.cloneNode(true)
+    grid.appendChild(gridLast);
+
+    if (gridLastEle === null) {
+        row.appendChild(column);
+        grid.appendChild(row);    
+    }
 }
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    let column = document.createElement("td")
+    let row = document.createElement("tr")
+    const table = document.querySelector("table");
+
+    for (let rows of table.rows) {
+        rows.insertCell(-1)
+        console.log("Apple")
+    }
+
+    if(table.rows.length === 0) {
+        row.append(column)
+        grid.appendChild(row);
+    }
+
+    //alert("Clicked Add Col"); // Replace this line with your code.
 }
 
 // Remove a row
