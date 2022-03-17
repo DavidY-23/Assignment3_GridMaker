@@ -9,13 +9,17 @@ function addR() {
     let row = document.createElement("tr");
     let column = document.createElement("td")
 
-    let gridLastEle = grid.lastElementChild
-    let gridLast = gridLastEle.cloneNode(true)
-    grid.appendChild(gridLast);
+    if (numRows > 0) {
+        let gridLastEle = grid.lastElementChild
+        let gridLast = gridLastEle.cloneNode(true)
+        grid.appendChild(gridLast);
+    
+    }
 
-    if (gridLastEle === null) {
+    if (numRows == 0) {
         row.appendChild(column);
         grid.appendChild(row);    
+        numRows += 1;
     }
 }
 
