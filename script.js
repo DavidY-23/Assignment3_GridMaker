@@ -53,6 +53,8 @@ function addC() {
     }
 
     if(numCols == 0 && numRows == 0) {
+        console.log("Why")
+        console.log("col", column);
         row.append(column)
         grid.appendChild(row);
         numRows += 1;
@@ -84,8 +86,10 @@ function removeC() {
         rows.deleteCell(-1)
         if (rows.childNodes.length == 0) {
             document.getElementById("grid").deleteRow(-1);
+            document.getElementById("grid").deleteRow(-1);
         }
     }
+    console.log(table);
     numCols--;
     if (numCols <= 0) {
         numCols = 0;
@@ -98,10 +102,7 @@ function removeC() {
 // Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
-
     let grids = document.querySelectorAll("td");
-
-
 }
 
 // Fill all uncolored cells
