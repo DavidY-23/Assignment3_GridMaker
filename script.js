@@ -12,7 +12,15 @@ function addR() {
     if (numRows > 0) {
         let gridLastEle = grid.lastElementChild
         let gridLast = gridLastEle.cloneNode(true)
+        for (let x = 0; x < gridLast.children.length; x++) {
+            gridLast.children[x].style.background = "white";
+            gridLast.children[x].onclick = function() {
+                this.style.background = colorSelected;
+
+            }
+        }
         grid.appendChild(gridLast);
+
     
     }
 
@@ -32,6 +40,17 @@ function addC() {
     for (let rows of table.rows) {
         rows.insertCell(-1)
         console.log("Apple")
+        console.log("this", rows);
+
+        console.log("children", rows.children)
+        for (let x = 0; x < rows.children.length; x++) {
+            rows.children[x].onclick = function() {
+                this.style.background = colorSelected;
+            }
+        }
+
+
+
     }
 
     if(table.rows.length === 0) {
@@ -62,6 +81,11 @@ function removeC() {
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
     console.log(colorSelected);
+
+    let grids = document.querySelectorAll("td");
+    console.log("grid", grids);
+
+
 }
 
 // Fill all uncolored cells
