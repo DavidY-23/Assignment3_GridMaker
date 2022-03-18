@@ -127,5 +127,13 @@ function fillAll(){
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    const table = document.querySelector("table");
+
+    for (let rows of table.rows) {
+        for (let x = 0; x < rows.children.length; x++) {
+            rows.children[x].style.background = "white";
+        }
+    }
+
+    //alert("Clicked Clear All"); // Replace this line with your code.
 }
