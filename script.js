@@ -8,8 +8,11 @@ function addR() {
     let grid = document.getElementById("grid");
     let row = document.createElement("tr");
     let column = document.createElement("td")
+    let table = document.querySelector("table");
 
-    if (numRows > 0) {
+    column.style.background = "white";
+
+    if (numRows > 0 || numCols > 0) {
         let gridLastEle = grid.lastElementChild
         let gridLast = gridLastEle.cloneNode(true)
         for (let x = 0; x < gridLast.children.length; x++) {
@@ -20,11 +23,12 @@ function addR() {
             }
         }
         grid.appendChild(gridLast);
-
+        numRows+= 1;
     
     }
 
     if (numRows == 0) {
+
         row.appendChild(column);
         grid.appendChild(row);    
         numRows += 1;
@@ -35,10 +39,11 @@ function addR() {
 function addC() {
     let column = document.createElement("td")
     let row = document.createElement("tr")
-    const table = document.querySelector("table");
-
+    let table = document.querySelector("table");
+    column.style.background = "white";
     for (let rows of table.rows) {
-        rows.insertCell(-1)
+        var insertion = rows.insertCell(-1)
+        insertion.style.background = "white";
         console.log("Apple")
         console.log("this", rows);
 
@@ -54,8 +59,11 @@ function addC() {
     }
 
     if(table.rows.length === 0) {
+        console.log("inside row tables");
         row.append(column)
         grid.appendChild(row);
+        numCols += 1;
+
     }
 
     //alert("Clicked Add Col"); // Replace this line with your code.
@@ -90,12 +98,31 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    const table = document.querySelector("table");
+    console.log("apple");
+    for (let rows of table.rows) {
+        console.log("INSIDE ROWS", rows)
+        for (let x = 0; x < rows.children.length; x++) {
+            console.log("rows", rows.children[x].style.background)
+            if (rows.children[x].style.background == "white" || rows.children[x].style.background == null) {
+                console.log("this is true!");
+                rows.children[x].style.background = colorSelected;
+            }
+        }
+    }
+    //alert("Clicked Fill All Uncolored"); // Replace this line with your code.
 }
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    const table = document.querySelector("table");
+
+    for (let rows of table.rows) {
+        for (let x = 0; x < rows.children.length; x++) {
+            rows.children[x].style.background = colorSelected;
+        }
+    }
+    //alert("Clicked Fill All"); // Replace this line with your code.
 }
 
 // Clear all cells
