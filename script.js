@@ -22,15 +22,16 @@ function addR() {
             }
         }
         grid.appendChild(gridLast);
-        numRows+= 1;
+        //numRows+= 1;
     
     }
 
-    if (numRows == 0) {
+    if (numCols == 0 && numRows == 0) {
         row.appendChild(column);
         grid.appendChild(row);    
-        numRows += 1;
+        numCols += 1;
     }
+    numRows += 1;
 }
 
 // Add a column
@@ -38,6 +39,8 @@ function addC() {
     let column = document.createElement("td")
     let row = document.createElement("tr")
     let table = document.querySelector("table");
+    let grid = document.getElementById("grid");
+
     column.style.background = "white";
     for (let rows of table.rows) {
         var insertion = rows.insertCell(-1)
@@ -49,28 +52,46 @@ function addC() {
         }
     }
 
-    if(table.rows.length === 0) {
+    if(numCols == 0 && numRows == 0) {
         row.append(column)
         grid.appendChild(row);
-        numCols += 1;
+        numRows += 1;
     }
+    numCols += 1;
+
 
     //alert("Clicked Add Col"); // Replace this line with your code.
 }
 
 // Remove a row
 function removeR() {
+    let table = document.querySelector("table");
     document.getElementById("grid").deleteRow(-1);
+    numRows--;
+    if (numRows <= 0) {
+        numRows = 0;
+        numCols = 0
+    }
+
     //alert("Clicked Remove Row"); // Replace this line with your code.
 }
 
 // Remove a column
 function removeC() {
     const table = document.querySelector("table");
-    
+
     for (let rows of table.rows) {
         rows.deleteCell(-1)
+        if (rows.childNodes.length == 0) {
+            document.getElementById("grid").deleteRow(-1);
+        }
     }
+    numCols--;
+    if (numCols <= 0) {
+        numCols = 0;
+        numRows = 0;
+    }
+
     //alert("Clicked Remove Col"); // Replace this line with your code.
 }
 
