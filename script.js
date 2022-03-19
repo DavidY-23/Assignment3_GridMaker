@@ -53,8 +53,6 @@ function addC() {
     }
 
     if(numCols == 0 && numRows == 0) {
-        console.log("Why")
-        console.log("col", column);
         row.append(column)
         grid.appendChild(row);
         numRows += 1;
@@ -89,7 +87,6 @@ function removeC() {
             document.getElementById("grid").deleteRow(-1);
         }
     }
-    console.log(table);
     numCols--;
     if (numCols <= 0) {
         numCols = 0;
@@ -111,7 +108,7 @@ function fillU(){
 
     for (let rows of table.rows) {
         for (let x = 0; x < rows.children.length; x++) {
-            if (rows.children[x].style.background == "white" || rows.children[x].style.background == null) {
+            if (rows.children[x].style.background == "white" || rows.children[x].style.background == null || rows.children[x].style.backgroundColor == "white") {
                 rows.children[x].style.background = colorSelected;
             }
         }
